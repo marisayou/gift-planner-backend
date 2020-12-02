@@ -12,6 +12,18 @@ class RecipientsController < ApplicationController
         )
     end
 
+    def show
+        recipient = Recipient.find(params[:id])
+        render json: recipient.to_json(
+            :include => { 
+                :recipient_items => {
+                    :except => [:created_at, :updated_at]
+                }
+            }, 
+            :except => [:created_at, :updated_at]
+        )
+    end
+
     def create
         recipient = Recipient.create(recipient_params)
         render json: recipient.to_json(

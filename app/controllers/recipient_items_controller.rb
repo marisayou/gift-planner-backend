@@ -15,9 +15,10 @@ class RecipientItemsController < ApplicationController
         render json: recipient_item, except: [:created_at, :updated_at]
     end
 
-    # def destroy
-
-    # end
+    def destroy
+        recipient_item = RecipientItem.find(params[:id])
+        recipient_item.delete
+    end
 
     private
     def recipient_item_params
