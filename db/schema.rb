@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_191037) do
     t.integer "recipient_id", null: false
     t.integer "item_id", null: false
     t.boolean "bought", default: false
-    t.integer "price"
+    t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_recipient_items_on_item_id"

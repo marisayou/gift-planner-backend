@@ -24,6 +24,11 @@ class RecipientsController < ApplicationController
         )
     end
 
+    def destroy
+        recipient = Recipient.find(params[:id])
+        recipient.delete
+    end
+
     private
     def recipient_params
         params.require(:recipient).permit(:name, :budget)

@@ -4,7 +4,7 @@ class CreateRecipientItems < ActiveRecord::Migration[6.0]
       t.references :recipient, null: false, foreign_key: true
       t.references :item, null: false, foreign_key: true
       t.boolean :bought, default: false
-      t.integer :price, default: nil
+      t.float :price
 
       t.timestamps
     end
