@@ -1,0 +1,2 @@
+class RecipientItemsController < ApplicationController
+end
