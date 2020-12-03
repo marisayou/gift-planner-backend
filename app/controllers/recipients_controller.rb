@@ -49,6 +49,6 @@ class RecipientsController < ApplicationController
 
     private
     def recipient_params
-        params.require(:recipient).permit(:name, :budget)
+        params.require(:recipient).permit(:name, :budget, :spent)
     end
 end

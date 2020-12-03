@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_191037) do
   create_table "recipients", force: :cascade do |t|
     t.string "name"
     t.float "budget"
+    t.float "spent", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
