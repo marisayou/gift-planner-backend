@@ -17,7 +17,7 @@ class RecipientItemsController < ApplicationController
 
     def destroy
         recipient_item = RecipientItem.find(params[:id])
-        recipient_item.delete
+        recipient_item.destroy
     end
 
     private

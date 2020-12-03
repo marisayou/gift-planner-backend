@@ -5,7 +5,7 @@ class RecipientsController < ApplicationController
         render json: recipients.to_json(
             :include => { 
                 :recipient_items => {
-                    :except => [:created_at, :updated_at]
+                    :except => [:created_at]
                 }
             }, 
             :except => [:created_at, :updated_at]
@@ -17,7 +17,7 @@ class RecipientsController < ApplicationController
         render json: recipient.to_json(
             :include => { 
                 :recipient_items => {
-                    :except => [:created_at, :updated_at]
+                    :except => [:created_at]
                 }
             }, 
             :except => [:created_at, :updated_at]
@@ -35,7 +35,7 @@ class RecipientsController < ApplicationController
         render json: recipient.to_json(
             :include => { 
                 :recipient_items => {
-                    :except => [:created_at, :updated_at]
+                    :except => [:created_at]
                 }
             }, 
             :except => [:created_at, :updated_at]
@@ -44,7 +44,7 @@ class RecipientsController < ApplicationController
 
     def destroy
         recipient = Recipient.find(params[:id])
-        recipient.delete
+        recipient.destroy
     end
 
     private
