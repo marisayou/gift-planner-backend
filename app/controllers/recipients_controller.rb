@@ -26,6 +26,12 @@ class RecipientsController < ApplicationController
 
     def create
         recipient = Recipient.create(recipient_params)
+        render json: recipient, except: [:created_at, :updated_at]
+    end
+
+    def update
+        recipient = Recipient.find(params[:id])
+        recipient.update(recipient_params)
         render json: recipient.to_json(
             :include => { 
                 :recipient_items => {
