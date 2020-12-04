@@ -4,9 +4,26 @@ class RecipientItemsController < ApplicationController
 
     # end
 
+    def index 
+        recipient_items = RecipientItem.where(recipient_id: params[:recipient_id])
+        sorted_recipient_items = recipient_items.sort_by { |ri| ri["updated_at"] }
+
+        render json: sorted_recipient_items.to_json(
+            :include => {
+                :recipient => { :except => [:created_at, :updated_at] },
+                :item => { :except => [:created_at, :updated_at] }
+            }, except: [:created_at]
+        )
+    end
+
     def show 
         recipient_item = RecipientItem.find(params[:id])
-        render json: recipient_item, except: [:created_at, :updated_at]
+        render json: recipient_item.to_json(
+            :include => {
+                :recipient => { :except => [:created_at, :updated_at] },
+                :item => { :except => [:created_at, :updated_at] }
+            }, except: [:created_at, :updated_at]
+        )
     end
 
     def update
