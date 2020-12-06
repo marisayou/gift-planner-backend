@@ -1,9 +1,5 @@
 class RecipientItemsController < ApplicationController
 
-    # def create
-
-    # end
-
     def index 
         recipient_items = RecipientItem.where(recipient_id: params[:recipient_id])
         sorted_recipient_items = recipient_items.sort_by { |ri| ri["updated_at"] }
@@ -24,6 +20,11 @@ class RecipientItemsController < ApplicationController
                 :item => { :except => [:created_at, :updated_at] }
             }, except: [:created_at, :updated_at]
         )
+    end
+
+    def create
+        recipient_item = RecipientItem.create(recipient_item_params)
+        render json:recipient_item, except: [:created_at, :updated_at]
     end
 
     def update

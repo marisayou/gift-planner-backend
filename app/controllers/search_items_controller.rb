@@ -1,8 +1,13 @@
 class SearchItemsController < ApplicationController
 
     def create
+        # destroy all search items first if there are any
+        SearchItem.all.destroy_all
+
+        # scrape Nordstrom for items and put results in a file
         SearchItem.search(params[:query])
-        puts params[:query]
+
+        # read results from file and create search items in db
         results = SearchItem.read_results()
         for i in 0...results.count
             name = results[i][0]
