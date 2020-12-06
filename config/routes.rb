@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :search_items
   resources :recipient_items
   resources :items
   resources :recipients

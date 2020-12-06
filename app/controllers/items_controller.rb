@@ -9,4 +9,5 @@ class ItemsController < ApplicationController
         item = Item.find(params[:id])
         render json: item, except: [:created_at, :updated_at]
     end
+
 end

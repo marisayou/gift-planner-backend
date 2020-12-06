@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_191037) do
+ActiveRecord::Schema.define(version: 2020_12_06_003332) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.float "price"
     t.string "link"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -35,6 +36,15 @@ ActiveRecord::Schema.define(version: 2020_12_01_191037) do
     t.string "name"
     t.float "budget"
     t.float "spent", default: 0.0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "search_items", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.string "link"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
