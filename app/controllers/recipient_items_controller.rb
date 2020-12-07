@@ -30,7 +30,12 @@ class RecipientItemsController < ApplicationController
     def update
         recipient_item = RecipientItem.find(params[:id])
         recipient_item.update(recipient_item_params)
-        render json: recipient_item, except: [:created_at, :updated_at]
+        render json: recipient_item.to_json(
+            :include => {
+                :recipient => { :except => [:created_at, :updated_at] },
+                :item => { :except => [:created_at, :updated_at] }
+            }, except: [:created_at, :updated_at]
+        )
     end
 
     def destroy
