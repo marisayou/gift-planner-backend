@@ -9,6 +9,7 @@ class SearchItemsController < ApplicationController
 
         # read results from file and create search items in db
         results = SearchItem.read_results()
+        
         for i in 0...results.count
             name = results[i][0]
             price = results[i][1].to_f
