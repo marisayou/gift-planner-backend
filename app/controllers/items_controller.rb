@@ -6,8 +6,15 @@ class ItemsController < ApplicationController
     end
 
     def show
-        item = Item.find_by(link: params[:link])
-        render json: item, except: [:created_at, :updated_at]
+        item = Item.find(params[:id])
+        render json: item.to_json(
+            :include => {
+                :recipient_items => {
+                    :except => [:created_at, :updated_at]
+                }
+            }, 
+            :except => [:created_at, :updated_at]
+        ) 
     end
 
     def create
@@ -19,6 +26,11 @@ class ItemsController < ApplicationController
         item = Item.find(params[:id])
         item.update(item_params)
         render json: item, except: [:created_at, :updated_at]
+    end
+
+    def destroy
+        item = Item.find(params[:id])
+        item.destroy
     end
 
     private
