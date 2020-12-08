@@ -7,6 +7,7 @@ const queryTerm = process.argv.slice(2);
 (async () => {
   fs.writeFile(file, '', err => { if (err) throw err });
   const browser = await firefox.launch({ headless: false });
+  // const browser = await firefox.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
   await page.goto(`https://www.nordstrom.com/sr?origin=keywordsearch&keyword=${queryTerm}`);
