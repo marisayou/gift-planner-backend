@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_003332) do
+ActiveRecord::Schema.define(version: 2020_12_07_230742) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2020_12_06_003332) do
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.integer "recipient_id", null: false
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_notes_on_recipient_id"
   end
 
   create_table "recipient_items", force: :cascade do |t|
@@ -49,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_003332) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "notes", "recipients"
   add_foreign_key "recipient_items", "items"
   add_foreign_key "recipient_items", "recipients"
 end

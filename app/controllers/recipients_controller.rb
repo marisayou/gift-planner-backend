@@ -6,6 +6,9 @@ class RecipientsController < ApplicationController
             :include => { 
                 :recipient_items => {
                     :except => [:created_at]
+                },
+                :notes => {
+                    :except => [:updated_at]
                 }
             }, 
             :except => [:created_at, :updated_at]
@@ -18,6 +21,9 @@ class RecipientsController < ApplicationController
             :include => { 
                 :recipient_items => {
                     :except => [:created_at]
+                },
+                :notes => {
+                    :except => [:updated_at]
                 }
             }, 
             :except => [:created_at, :updated_at]
